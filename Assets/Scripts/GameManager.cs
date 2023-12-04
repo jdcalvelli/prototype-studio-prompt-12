@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,10 +10,15 @@ public class GameManager : MonoBehaviour
     [Header("Views")]
     [SerializeField] private GameObject mainView;
     [SerializeField] private GameObject gameOverView;
+    [SerializeField] private TextMeshProUGUI scoreView;
 
     [Header("Controllers")]
     [SerializeField] private ScreenChange screenChangeController;
     [SerializeField] private LawraChange lawraChangeController;
+
+    public float score;
+
+    private bool _isScoring = true;
     
     // Start is called before the first frame update
     void Start()
@@ -39,18 +46,33 @@ public class GameManager : MonoBehaviour
             // need a more robust restart function
             screenChangeController.ChangeScreen();
             StartCoroutine(lawraChangeController.LawraBehavior());
-            //
             mainView.SetActive(true);
             gameOverView.SetActive(false);
+            score = 0;
+            _isScoring = true;
+            //
         }
         
         // check state
-        if (screenChangeController.currentState == ScreenChange.ComputerStates.GODOT 
-            && lawraChangeController.currentState == LawraChange.lawraStates.LOOKING)
+        if (screenChangeController.currentState == ScreenChange.ComputerStates.GODOT)
         {
-            Debug.Log("game over");
-            mainView.SetActive(false);
-            gameOverView.SetActive(true);
+            if (lawraChangeController.currentState == LawraChange.lawraStates.LOOKING)
+            {
+                Debug.Log("game over");
+                mainView.SetActive(false);
+                gameOverView.SetActive(true);
+                _isScoring = false;
+            }
+            else
+            {
+                if (_isScoring)
+                {
+                    score += Time.deltaTime;
+                }
+            }
         }
+        
+        // set view score to be score value
+        scoreView.text = Math.Round(score, 2).ToString();
     }
 }
