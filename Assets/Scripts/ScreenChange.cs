@@ -1,45 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ScreenChange : MonoBehaviour
 {
-    private enum computerStates
+    public enum ComputerStates
     {
         UNITY,
         GODOT,
     }
 
-    private computerStates _currentState;
+    public ComputerStates currentState;
     
     [SerializeField] private Sprite unityScreen;
     [SerializeField] private Sprite godotScreen;
-    // Start is called before the first frame update
-    void Start()
+    
+    /// <summary>
+    /// call function to change the state of the screen and its view
+    /// </summary>
+    public void ChangeScreen()
     {
-        // start it at the unity image defaulted
-        _currentState = computerStates.UNITY;
-        GetComponent<SpriteRenderer>().sprite = unityScreen;
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // check inputs
-        if (Input.GetKeyDown("space"))
+        switch (currentState)
         {
-            switch (_currentState)
-            {
-                case computerStates.UNITY:
-                    _currentState = computerStates.GODOT;
-                    GetComponent<SpriteRenderer>().sprite = godotScreen;
-                    break;
-                case computerStates.GODOT:
-                    _currentState = computerStates.UNITY;
-                    GetComponent<SpriteRenderer>().sprite = unityScreen;
-                    break;
-            }
+            case ComputerStates.UNITY:
+                currentState = ComputerStates.GODOT;
+                GetComponent<SpriteRenderer>().sprite = godotScreen;
+                break;
+            case ComputerStates.GODOT:
+                currentState = ComputerStates.UNITY;
+                GetComponent<SpriteRenderer>().sprite = unityScreen;
+                break;
         }
     }
 }

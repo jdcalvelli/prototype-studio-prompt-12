@@ -123,6 +123,52 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &288469782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 288469783}
+  - component: {fileID: 288469784}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &288469783
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288469782}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &288469784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288469782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86de0fb13ae7942d2a13d9d3ad279742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenChangeController: {fileID: 502358087}
+  lawraChangeController: {fileID: 1003252992}
 --- !u!1 &502358084
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +252,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &502358087
 MonoBehaviour:
@@ -220,6 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf6921cf1c3204d7282a4605bebd325f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 1
   unityScreen: {fileID: 21300000, guid: 04e1b3893d2294fcbb9f9ceaae922ef8, type: 3}
   godotScreen: {fileID: 21300000, guid: 370671faeb4054f89b0c412f6e915156, type: 3}
 --- !u!1 &519420028
@@ -304,7 +351,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1003252989
 GameObject:
@@ -389,7 +436,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1003252992
 MonoBehaviour:
@@ -403,6 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1221146d75ef4dd2b49da929fecc170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 0
   lawraPeeking: {fileID: 21300000, guid: a5c9d869173134d459a758d3d722c594, type: 3}
   lawraLooking: {fileID: 21300000, guid: fea9aef954d3c4a4eb0a9ef2d780c339, type: 3}
 --- !u!1 &1321338124
@@ -487,5 +535,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
