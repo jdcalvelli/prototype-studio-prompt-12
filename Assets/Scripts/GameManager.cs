@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ScreenChange screenChangeController;
     [SerializeField] private LawraChange lawraChangeController;
 
-    public float score;
+    public float score = 0;
 
     [SerializeField] private bool _isScoring = true;
     
@@ -45,13 +46,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown("r"))
         {
             Debug.Log("restart");
-            // need a more robust restart function
-            score = 0;
-            _isScoring = true;
-            screenChangeController.ChangeScreen();
-            StartCoroutine(lawraChangeController.LawraBehavior());
-            mainView.SetActive(true);
-            gameOverView.SetActive(false);
+            SceneManager.LoadScene("Scenes/MainScene");
         }
         
         // check state
